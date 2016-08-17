@@ -1,7 +1,5 @@
 package com.happylrd.criminalintent;
 
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -26,7 +24,7 @@ public class DatePickerFragment extends DialogFragment {
 
     private DatePicker mDatePicker;
 
-    public static DatePickerFragment newInstance(Date date){
+    public static DatePickerFragment newInstance(Date date) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_DATE, date);
 
@@ -69,8 +67,8 @@ public class DatePickerFragment extends DialogFragment {
                 .create();
     }
 
-    private void sendResult(int resultCode, Date date){
-        if(getTargetFragment() == null){
+    private void sendResult(int resultCode, Date date) {
+        if (getTargetFragment() == null) {
             return;
         }
 
