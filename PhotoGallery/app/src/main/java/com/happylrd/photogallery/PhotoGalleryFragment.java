@@ -1,5 +1,6 @@
 package com.happylrd.photogallery;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -151,18 +152,32 @@ public class PhotoGalleryFragment extends VisibleFragment {
         }
     }
 
-    private class PhotoHolder extends RecyclerView.ViewHolder {
+    private class PhotoHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         private ImageView mItemImageView;
+        private GalleryItem mGalleryItem;
 
         public PhotoHolder(View itemView) {
             super(itemView);
 
             mItemImageView = (ImageView) itemView
                     .findViewById(R.id.fragment_photo_gallery_image_view);
+            itemView.setOnClickListener(this);
         }
 
         public void bindDrawable(Drawable drawable) {
             mItemImageView.setImageDrawable(drawable);
+        }
+
+        public void bindGalleryItem(GalleryItem galleryItem) {
+            mGalleryItem = galleryItem;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = PhotoPageActivity
+                    .newIntent(getActivity(), mGalleryItem.getPhotoPageUri());
+            startActivity(intent);
         }
     }
 
@@ -184,6 +199,7 @@ public class PhotoGalleryFragment extends VisibleFragment {
         @Override
         public void onBindViewHolder(PhotoHolder photoHolder, int position) {
             GalleryItem galleryItem = mGalleryItems.get(position);
+            photoHolder.bindGalleryItem(galleryItem);
             Drawable placeholder = getResources().getDrawable(R.drawable.windmill);
             photoHolder.bindDrawable(placeholder);
             mThumbnailDownloader.queueThumbnail(photoHolder, galleryItem.getUrl());
