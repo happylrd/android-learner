@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MaterialTest</string>
+
+    <string name="mock_username">happylrd17@gmail.com</string>
+    <string name="mock_nickname">Diego Li</string>
+    <string name="fruit_image_description">a fruit image</string>
+
+    <string name="call_en">Call</string>
+    <string name="friends_en">Friends</string>
+    <string name="location_en">Location</string>
+    <string name="mail_en">Mail</string>
+    <string name="task_en">Tasks</string>
+    <string name="backup_en">Backup</string>
+    <string name="delete_en">Delete</string>
+    <string name="settings">Settings</string>
+</resources>
